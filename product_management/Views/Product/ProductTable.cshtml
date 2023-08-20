@@ -1,0 +1,32 @@
+﻿@model IEnumerable<Product>
+@{
+}
+<table class="table table-bordered" style="border:2px">
+    <thead>
+        <tr>
+            <th scope="col">Tên sản phẩm</th>
+            <th scope="col">Số lượng sản phẩm</th>
+            <th scope="col">Giá bán sản phẩm</th>
+            <th scope="col">Mô tả sản phẩm</th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var x in Model)
+        {
+            <tr>
+                <td>@x.Name</td>
+                <td>@x.Amount</td>
+                <td>@x.Price</td>
+                <td>@x.Description</td>
+                <td>
+                    <div>
+                        <a asp-controller="Product" asp-action="Update" asp-route-id="@x.Id" class="btn btn-primary">Cập nhật</a>
+                        <a data-bs-toggle="modal" data-bs-target="#confirmdeletemodal"
+                           onclick="showConfirm(@x.Id)" class="btn btn-primary">Xóa</a>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

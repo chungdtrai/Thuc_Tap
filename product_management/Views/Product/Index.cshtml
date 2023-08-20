@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Product> 
+@{
+    ViewData["Title"] = "Index";
+}
+<div id="successAlert" class="alert alert-success" style="display: none;">
+    Xóa thành công!
+</div>
+<div class="mt-5 ">
+    <h1>Quản lý sản phẩm</h1>
+    <div>
+        <a asp-controller="Product" asp-action="Create" class="btn btn-primary">Thêm mới sản phẩm</a>
+    </div>
+
+    <br />
+    <form class="d-flex" method="post" asp-controller="Product" asp-action="Index">
+        <input class="form-control me-2" name="search" placeholder="Nhập tến sản phẩm" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Tìm kiếm</button>
+    </form>
+    <br />
+    <div id="tableContainer">
+        @Html.Partial("ProductTable", Model)
+    </div>
+</div>
+<div id="confirmdeletemodal" class="modal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Xác nhận xóa</h5>
+            </div>
+            <div class="modal-body">
+                <p id="deletemessage"></p>
+            </div>
+            <div class="modal-footer">
+                <button id="cancelbutton" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Thoát</button>
+                <button id="deletebutton" type="button" class="btn btn-danger">Xóa</button>
+            </div>
+        </div>
+    </div>
+</div>
